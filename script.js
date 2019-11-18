@@ -1,5 +1,5 @@
 function quizGame(){
-    console.log("quiz game test");
+    console.log("script.js linked.");
     // Define variables to store questions, time, current score, all-time score
     
     // Create button to start game
