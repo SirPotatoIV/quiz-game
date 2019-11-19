@@ -48,9 +48,17 @@ function quizGame(){
     //  -- to generate html for questions
     function renderQuestion() {
         console.log("renderQuestion test")
-        questionContainerEl = document.createElement("div");
+        const questionContainerEl = document.createElement("div");
         questionContainerEl.setAttribute("class", "container");
+        
         console.log(questionContainerEl);
+        
+        const testEl = document.createElement("h1");
+        testEl.innerHTML = "Test";
+        questionContainerEl.append(testEl);
+        console.log(testEl);
+        document.body.append(questionContainerEl);
+        
     }
     renderQuestion();
     // Get user answer
