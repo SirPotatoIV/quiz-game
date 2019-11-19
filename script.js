@@ -42,6 +42,7 @@ function quizGame(){
                 timeDisplayEl.innerHTML = "00";
                 // Only used for testing.
                 console.log("game over")
+                renderEndGame();
             }
         }, 1000);
 
@@ -155,7 +156,7 @@ function quizGame(){
             renderQuestion();
         } else {
             console.log("game over");
-            // endgame();
+            renderEndGame();
         }   
     }
     // switchQuestion();
@@ -163,5 +164,13 @@ function quizGame(){
     // Display Score
     // Collect User Initials and store score
     // Make code restart
+    function renderEndGame() {
+        console.log("renderEndGame test");
+        containerEl.innerHTML = "";
+        const endGameMessageEl = document.createElement('h2');
+        endGameMessageEl.innerText = "All done!"; 
+        createRow(1, endGameMessageEl);
+    }
+    // renderEndGame();
 }
 quizGame()
