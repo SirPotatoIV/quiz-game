@@ -15,6 +15,7 @@ function quizGame(){
     // -- This was done with HTML. No need to dynamically generate ... currently
     document.getElementById("start-btn").addEventListener("click", function(){
         console.log("Button Clicked");
+        renderQuestion();
         timer();
     });
     // Start a timer and display countdown
@@ -46,12 +47,13 @@ function quizGame(){
     // startGame();
 
     let rowCount = 2;
-    let textToDispaly = "Test";
+    let textToDisplay = "Test";
     let containerEl = document.createElement("div");
     containerEl.setAttribute("class", "container");
-    function createRow(rowTotal) {
+    function createRow(rowTotal, text) {
         console.log("createRow test")
         
+        for (let i = 0; i < rowTotal; i++){
         const rowEl = document.createElement("div");
         rowEl.setAttribute("class", "row")
         // console.log(rowEl);
@@ -63,44 +65,46 @@ function quizGame(){
         rowEl.append(colEl);
 
         const textEl = document.createElement("div");
-        textEl.innerHTML = textToDispaly;
+        textEl.innerHTML = text;
         colEl.append(textEl);
         
-        document.body.append(containerEl);
+        document.body.append(containerEl);}
         
     }
-    createRow(rowCount, textToDispaly);
+    createRow(rowCount, textToDisplay);
     //  -- to generate html for questions
     //  -- -- Following insctructors example to start building function
     //  -- -- currentQuestion should be moved up to other variables at some point.
     let currentQuestion = 0;
     function renderQuestion() {
-        console.log("renderQuestion test")
-        // Creates the main container for displaying the question
-        const questionContainerEl = document.createElement("div");
-        questionContainerEl.setAttribute("class", "container");
-        // console.log(questionContainerEl);
+        // console.log("renderQuestion test")
+        // // Creates the main container for displaying the question
+        // const questionContainerEl = document.createElement("div");
+        // questionContainerEl.setAttribute("class", "container");
+        // // console.log(questionContainerEl);
         
-        const questionRowEl = document.createElement("div");
-        questionRowEl.setAttribute("class", "row")
-        // console.log(questionRowEl);
-        questionContainerEl.append(questionRowEl);
+        // const questionRowEl = document.createElement("div");
+        // questionRowEl.setAttribute("class", "row")
+        // // console.log(questionRowEl);
+        // questionContainerEl.append(questionRowEl);
         
-        const questionColEl = document.createElement("div");
-        questionColEl.setAttribute("class", "col");
-        // console.log(questionColEl);
-        // console.log(questionContainerEl);
-        questionRowEl.append(questionColEl);
+        // const questionColEl = document.createElement("div");
+        // questionColEl.setAttribute("class", "col");
+        // // console.log(questionColEl);
+        // // console.log(questionContainerEl);
+        // questionRowEl.append(questionColEl);
         
-        const questionEl = document.createElement("h3");
-        questionEl.innerHTML = questions[currentQuestion].title;
-        questionColEl.append(questionEl);
-        // console.log(questionEl);
+        // const questionEl = document.createElement("h3");
+        // questionEl.innerHTML = questions[currentQuestion].title;
+        // questionColEl.append(questionEl);
+        // // console.log(questionEl);
+        createRow(1, questions[currentQuestion].title)
+
         
         const answerRowEl = document.createElement("div");
         answerRowEl.setAttribute("class", "row")
         // console.log(answerRowEl);
-        questionContainerEl.append(answerRowEl);
+        containerEl.append(answerRowEl);
         
         const answerColEl = document.createElement("div");
         answerColEl.setAttribute("class", "col");
@@ -131,10 +135,10 @@ function quizGame(){
         
 
         // Used to append container, which is all of the html, to the body
-        document.body.append(questionContainerEl);
+        document.body.append(containerEl);
         
     }
-    renderQuestion();
+    // renderQuestion();
     // Get user answer
     // Check if user answer is correct
     function answerCheck () {
