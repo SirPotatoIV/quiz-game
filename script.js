@@ -46,6 +46,9 @@ function quizGame(){
     startGame();
 
     //  -- to generate html for questions
+    //  -- -- Following insctructors example to start building function
+    //  -- -- currentQuestion should be moved up to other variables at some point.
+    let currentQuestion = 0;
     function renderQuestion() {
         console.log("renderQuestion test")
         // Creates the main container for displaying the question
@@ -82,16 +85,19 @@ function quizGame(){
         
         let answerEl = "";
         
-        // create a lopp to add a button for every question
-        for(let i=0; i < questions[1].choices.length; i++){
-            // console.log(questions[1].choices[i]);
+        // Create a lopp to add a button for every question
+        // Must have let i=0; instead of i=0; if I want event listner to be able to use i.
+        for(let i=0; i < questions[currentQuestion].choices.length; i++){
+            // console.log(questions[currentQuestion].choices[i]);
             answerEl = document.createElement("button");
             answerEl.setAttribute("class", "btn btn-secondary");
-            answerEl.innerHTML = questions[1].choices[i];
+            answerEl.innerHTML = questions[currentQuestion].choices[i];
             answerColEl.append(answerEl);
 
             answerEl.addEventListener("click", function(){
-                console.log(questions[1].choices[i]+" clicked");
+                console.log(questions[currentQuestion].choices[i]+" clicked");
+                questions[currentQuestion].userAnswer = questions[currentQuestion].choices[i];
+                console.log("User Answer: "+questions[currentQuestion].userAnswer);
             })
             // console.log(answerEl);
         }
