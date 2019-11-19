@@ -68,7 +68,7 @@ function quizGame(){
         questionRowEl.append(questionColEl);
         
         const questionEl = document.createElement("h3");
-        questionEl.innerHTML = questions[1].title;
+        questionEl.innerHTML = questions[currentQuestion].title;
         questionColEl.append(questionEl);
         console.log(questionEl);
         
@@ -98,6 +98,7 @@ function quizGame(){
                 console.log(questions[currentQuestion].choices[i]+" clicked");
                 questions[currentQuestion].userAnswer = questions[currentQuestion].choices[i];
                 console.log("User Answer: "+questions[currentQuestion].userAnswer);
+                answerCheck();
             })
             // console.log(answerEl);
         }
@@ -113,7 +114,7 @@ function quizGame(){
     // Check if user answer is correct
     function answerCheck () {
         console.log("answerCheck test")
-        if (questions[0].answer === questions[0].userAnswer)
+        if (questions[currentQuestion].answer === questions[currentQuestion].userAnswer)
         {
             console.log("User answered question correctly.");
         } else {
