@@ -54,32 +54,32 @@ function quizGame(){
         // Creates the main container for displaying the question
         const questionContainerEl = document.createElement("div");
         questionContainerEl.setAttribute("class", "container");
-        console.log(questionContainerEl);
+        // console.log(questionContainerEl);
         
         const questionRowEl = document.createElement("div");
         questionRowEl.setAttribute("class", "row")
-        console.log(questionRowEl);
+        // console.log(questionRowEl);
         questionContainerEl.append(questionRowEl);
         
         const questionColEl = document.createElement("div");
         questionColEl.setAttribute("class", "col");
-        console.log(questionColEl);
+        // console.log(questionColEl);
         // console.log(questionContainerEl);
         questionRowEl.append(questionColEl);
         
         const questionEl = document.createElement("h3");
         questionEl.innerHTML = questions[currentQuestion].title;
         questionColEl.append(questionEl);
-        console.log(questionEl);
+        // console.log(questionEl);
         
         const answerRowEl = document.createElement("div");
         answerRowEl.setAttribute("class", "row")
-        console.log(answerRowEl);
+        // console.log(answerRowEl);
         questionContainerEl.append(answerRowEl);
         
         const answerColEl = document.createElement("div");
         answerColEl.setAttribute("class", "col");
-        console.log(answerColEl);
+        // console.log(answerColEl);
         // console.log(questionContainerEl);
         answerRowEl.append(answerColEl);
         
@@ -113,15 +113,19 @@ function quizGame(){
     // Get user answer
     // Check if user answer is correct
     function answerCheck () {
-        console.log("answerCheck test")
+        // console.log("answerCheck test")
         if (questions[currentQuestion].answer === questions[currentQuestion].userAnswer)
         {
             console.log("User answered question correctly.");
+            questions[currentQuestion].outcome = true;
+            console.log(questions[currentQuestion].outcome);
         } else {
             console.log("User answered question incorrectly.");
+            questions[currentQuestion].outcome = false;
+            console.log(questions[currentQuestion].outcome);
         }
     }
-    answerCheck();
+    // answerCheck();
     // Decide if time should be subtracted
     function subtractTime() {
         // console.log("subtractTime Test");
