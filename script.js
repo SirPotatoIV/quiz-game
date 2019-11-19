@@ -58,17 +58,33 @@ function quizGame(){
         console.log(questionRowEl);
         questionContainerEl.append(questionRowEl);
         
-        const colEl = document.createElement("div");
-        colEl.setAttribute("class", "col");
-        console.log(colEl);
+        const questionColEl = document.createElement("div");
+        questionColEl.setAttribute("class", "col");
+        console.log(questionColEl);
         // console.log(questionContainerEl);
-        questionRowEl.append(colEl);
+        questionRowEl.append(questionColEl);
         
         const questionEl = document.createElement("h1");
         questionEl.innerHTML = "Question";
-        colEl.append(questionEl);
+        questionColEl.append(questionEl);
         console.log(questionEl);
-
+        
+        const answerRowEl = document.createElement("div");
+        answerRowEl.setAttribute("class", "row")
+        console.log(answerRowEl);
+        questionContainerEl.append(answerRowEl);
+        
+        const answerColEl = document.createElement("div");
+        answerColEl.setAttribute("class", "col");
+        console.log(answerColEl);
+        // console.log(questionContainerEl);
+        answerRowEl.append(answerColEl);
+        
+        const answerEl = document.createElement("h1");
+        answerEl.innerHTML = "Answer";
+        answerColEl.append(answerEl);
+        console.log(answerEl);
+        
 
         
         // Used to append container, which is all of the html, to the body
