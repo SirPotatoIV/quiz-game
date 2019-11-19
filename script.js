@@ -40,11 +40,36 @@ function quizGame(){
     // timer();
     // Create function to start the game 
     //  -- to start the timer
-    function startGame() {
-        console.log("startGame test");
-    }
-    startGame();
+    // function startGame() {
+    //     console.log("startGame test");
+    // }
+    // startGame();
 
+    let rowCount = 2;
+    let textToDispaly = "Test";
+    let containerEl = document.createElement("div");
+    containerEl.setAttribute("class", "container");
+    function createRow(rowTotal) {
+        console.log("createRow test")
+        
+        const rowEl = document.createElement("div");
+        rowEl.setAttribute("class", "row")
+        // console.log(rowEl);
+        containerEl.append(rowEl);
+        
+        const colEl = document.createElement("div");
+        colEl.setAttribute("class", "col");
+        // console.log(ColEl);
+        rowEl.append(colEl);
+
+        const textEl = document.createElement("div");
+        textEl.innerHTML = textToDispaly;
+        colEl.append(textEl);
+        
+        document.body.append(containerEl);
+        
+    }
+    createRow(rowCount, textToDispaly);
     //  -- to generate html for questions
     //  -- -- Following insctructors example to start building function
     //  -- -- currentQuestion should be moved up to other variables at some point.
@@ -119,6 +144,7 @@ function quizGame(){
             console.log("User answered question correctly.");
             questions[currentQuestion].outcome = true;
             console.log(questions[currentQuestion].outcome);
+            
         } else {
             console.log("User answered question incorrectly.");
             questions[currentQuestion].outcome = false;
