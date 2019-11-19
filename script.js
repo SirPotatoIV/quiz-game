@@ -7,6 +7,7 @@ function quizGame(){
     const score = 0;
     const highScores = [];
     const penaltyTime = 1;
+    let currentQuestion = 0;
     timeDisplayEl = document.getElementById("time-display")
     // console.log(timeDisplayEl);
 
@@ -16,6 +17,7 @@ function quizGame(){
     document.getElementById("start-btn").addEventListener("click", function(){
         console.log("Button Clicked");
         document.getElementById("main-container").innerHTML = ""
+        currentQuestion = 0;
         renderQuestion();
         timer();
     });
@@ -70,7 +72,6 @@ function quizGame(){
     //  -- to generate html for questions
     //  -- -- Following insctructors example to start building function
     //  -- -- currentQuestion should be moved up to other variables at some point.
-    let currentQuestion = 0;
     function renderQuestion() {
         
         const questionEl = document.createElement("h3");
@@ -94,6 +95,9 @@ function quizGame(){
                 questions[currentQuestion].userAnswer = questions[currentQuestion].choices[i];
                 console.log("User Answer: "+questions[currentQuestion].userAnswer);
                 answerCheck();
+                switchQuestion();
+                renderQuestion;
+
             })
             // console.log(answerEl);
         }
@@ -135,6 +139,11 @@ function quizGame(){
     // subtractTime();
 
     // Update variable to store if answer was right or wrong
+    // Change to next question
+    function switchQuestion() {
+        currentQuestion = currentQuestion + 1;
+    }
+    switchQuestion();
     // Calculate final score
     // Display Score
     // Collect User Initials and store score
