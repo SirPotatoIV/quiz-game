@@ -22,6 +22,7 @@ function quizGame(){
         // Creates an interval that runs every 1000 ms or 1 second.
         mainInterval = setInterval(function(){
             // Used to calculate the current time. The interval runs every second. Therefore, 1 second is subtracted every interation.
+            subtractTime();
             time = time - 1;
 
             console.log("timer test:"+ time);
@@ -45,18 +46,17 @@ function quizGame(){
     // Get user answer
     // Check if user answer is correct
     // Decide if time should be subtracted
-    console.log(questions);
-    function timeSubtract() {
-        console.log("timeSubtract Test");
+    function subtractTime() {
+        console.log("subtractTime Test");
         console.log(questions);
-        // if (questions[0].outcome) {
-        //     // Nothing for now
-        // } else {
-        //     console.log("User got question wrong. 1 second subracted from time.")
-        //     time = time - 1;
-        // }
+        if (questions[0].outcome) {
+            // Nothing for now
+        } else {
+            console.log("User got question wrong. 1 second subracted from time.")
+            time = time - 1;
+        }
     }
-    timeSubtract();
+    subtractTime();
 
     // Update variable to store if answer was right or wrong
     // Calculate final score
