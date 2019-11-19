@@ -80,14 +80,16 @@ function quizGame(){
         // console.log(questionContainerEl);
         answerRowEl.append(answerColEl);
         
-        const answerEl = document.createElement("h1");
-        answerEl.innerHTML = "Answer";
-        answerColEl.append(answerEl);
-        console.log(answerEl);
+        let answerEl = "";
         
         // create a lopp to add a button for every question
-        for(i=0; i < questions.length; i++){
-            console.log(questions[i].choices);
+        for(i=0; i < questions[1].choices.length; i++){
+            // console.log(questions[1].choices[i]);
+            answerEl = document.createElement("button");
+            answerEl.setAttribute("class", "btn btn-secondary");
+            answerEl.innerHTML = questions[1].choices[i];
+            answerColEl.append(answerEl);
+            // console.log(answerEl);
         }
         
         
