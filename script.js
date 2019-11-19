@@ -6,6 +6,9 @@ function quizGame(){
     const defaultTime = 10;
     const score = 0;
     const highScores = [];
+    timeDisplayEl = document.getElementById("time-display")
+    console.log(timeDisplayEl);
+
 
     // Create button to start game
     // -- This was done with HTML. No need to dynamically generate ... currently
@@ -19,6 +22,7 @@ function quizGame(){
             time = time - 1;
 
             console.log("timer test:"+ time);
+            timeDisplayEl.innerHTML = time;
 
             if (time <= 0)
             clearInterval(mainInterval);
