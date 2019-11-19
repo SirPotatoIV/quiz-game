@@ -35,9 +35,14 @@ function quizGame(){
             // Changes the inner html of the element that displays the time remaining ever interval, ie every second.
             timeDisplayEl.innerHTML = time;
 
-            if (time <= 0)
-            clearInterval(mainInterval);
-
+            if (time <= 0){
+                // Causes mainInterval to end
+                clearInterval(mainInterval);
+                // Due to the time subtraction, sometimes the final time is less than 0. This causes the display to be 00 when the clock runs out.
+                timeDisplayEl.innerHTML = "00";
+                // Only used for testing.
+                console.log("game over")
+            }
         }, 1000);
 
     }
