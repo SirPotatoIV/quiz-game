@@ -184,6 +184,10 @@ function quizGame(){
         const userScoreMessageEl = document.createElement('h4');
         userScoreMessageEl.innerHTML = "Your score was: "+ calcFinalScore();
         endGameMessageEl.append(userScoreMessageEl);
+        const initialMessageEl = document.createElement('div');
+        initialMessageEl.setAttribute('class', 'user-input');
+        initialMessageEl.innerHTML = "Enter your intials: <input type='text' id='intialInput'></input>"
+        endGameMessageEl.append(initialMessageEl);
         createRow(1, endGameMessageEl);
     }
     // renderEndGame();
