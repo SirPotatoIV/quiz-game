@@ -161,6 +161,18 @@ function quizGame(){
     }
     // switchQuestion();
     // Calculate final score
+    function calcFinalScore() {
+        let finalScore = 0;
+        for(let i = 0; i < questions.length; i++){
+            if(questions[i].outcome){
+                finalScore++;
+            }
+            else {
+                // Nothing
+            }
+        }
+        return finalScore; 
+    }
     // Display Score
     // Collect User Initials and store score
     // Make code restart
@@ -168,7 +180,10 @@ function quizGame(){
         console.log("renderEndGame test");
         containerEl.innerHTML = "";
         const endGameMessageEl = document.createElement('h2');
-        endGameMessageEl.innerText = "All done!"; 
+        endGameMessageEl.innerText = "All done!";
+        const userScoreMessageEl = document.createElement('h4');
+        userScoreMessageEl.innerHTML = "Your score was: "+ calcFinalScore();
+        endGameMessageEl.append(userScoreMessageEl);
         createRow(1, endGameMessageEl);
     }
     // renderEndGame();
