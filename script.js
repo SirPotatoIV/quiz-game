@@ -6,6 +6,7 @@ function quizGame(){
     const defaultTime = 10;
     const score = 0;
     const highScores = [];
+    const penaltyTime = 1;
     timeDisplayEl = document.getElementById("time-display")
     // console.log(timeDisplayEl);
 
@@ -42,18 +43,20 @@ function quizGame(){
         console.log("startGame Test");
     }
     startGame();
+
     //  -- to generate html for questions
     // Get user answer
     // Check if user answer is correct
     // Decide if time should be subtracted
     function subtractTime() {
-        console.log("subtractTime Test");
-        console.log(questions);
+        // console.log("subtractTime Test");
+        // console.log(questions);
         if (questions[0].outcome) {
             // Nothing for now
         } else {
-            console.log("User got question wrong. 1 second subracted from time.")
-            time = time - 1;
+            console.log("User got question wrong. "+penaltyTime+" second(s) subracted from time.")
+            // Subtracts
+            time = time - penaltyTime;
         }
     }
     subtractTime();
