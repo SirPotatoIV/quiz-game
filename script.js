@@ -12,7 +12,9 @@ function quizGame(){
 
     // Create button to start game
     // -- This was done with HTML. No need to dynamically generate ... currently
-
+    document.getElementById("start-btn").addEventListener("click", function(){
+        console.log("Button Clicked")
+    });
     // Start a timer and display countdown
     function timer() {
         time = defaultTime;
@@ -22,6 +24,7 @@ function quizGame(){
             time = time - 1;
 
             console.log("timer test:"+ time);
+            // Changes the inner html of the element that displays the time remaining ever interval, ie every second.
             timeDisplayEl.innerHTML = time;
 
             if (time <= 0)
@@ -31,7 +34,13 @@ function quizGame(){
 
     }
     timer();
-    // Create function to generate html for questions
+    // Create function to start the game 
+    //  -- to start the timer
+    function startGame() {
+        console.log("test startGame.");
+    }
+    startGame();
+    //  -- to generate html for questions
     // Get user answer
     // Check if user answer is correct
     // Decide if time should be subtracted
