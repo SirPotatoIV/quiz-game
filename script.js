@@ -100,7 +100,6 @@ function quizGame(){
                 console.log("User Answer: "+questions[currentQuestion].userAnswer);
                 answerCheck();
                 switchQuestion();
-                renderQuestion();
             })
             // console.log(answerEl);
         }
@@ -144,9 +143,16 @@ function quizGame(){
     // Update variable to store if answer was right or wrong
     // Change to next question
     function switchQuestion() {
-        currentQuestion = currentQuestion + 1;
+        if(currentQuestion <= (questions.length-2)){
+            currentQuestion = currentQuestion + 1;
+            console.log(currentQuestion, questions.length)
+            renderQuestion();
+        } else {
+            console.log("game over");
+            // endgame();
+        }   
     }
-    switchQuestion();
+    // switchQuestion();
     // Calculate final score
     // Display Score
     // Collect User Initials and store score
