@@ -3,10 +3,10 @@ function quizGame(){
     // Define variables to store questions, time, score, all-time score
     // -- See questions.js for variable being used to store the questions
     let time = 0;
-    const defaultTime = 10;
+    const defaultTime = (15*questions.length);
     const score = 0;
     const highScores = [];
-    const penaltyTime = 1;
+    const penaltyTime = 15;
     let currentQuestion = 0;
     timeDisplayEl = document.getElementById("time-display")
     // console.log(timeDisplayEl);
@@ -28,7 +28,7 @@ function quizGame(){
         // Referenced instructors example for creating a timer.
         mainInterval = setInterval(function(){
             // Used to calculate the current time. The interval runs every second. Therefore, 1 second is subtracted every interation.
-            subtractTime();
+            // subtractTime();
             time = time - 1;
 
             console.log("timer test:"+ time);
@@ -119,6 +119,7 @@ function quizGame(){
             document.getElementById("outcomeDisplay").innerHTML = "Correct!";
             
         } else {
+            subtractTime()
             console.log("User answered question incorrectly.");
             questions[currentQuestion].outcome = false;
             console.log(questions[currentQuestion].outcome);
@@ -130,13 +131,13 @@ function quizGame(){
     function subtractTime() {
         // console.log("subtractTime Test");
         // console.log(questions);
-        if (questions[0].outcome) {
-            // Nothing for now
-        } else {
+        // if (questions[i].outcome) {
+        //     // Nothing for now
+        // } else {
             console.log("User got question wrong. "+penaltyTime+" second(s) subracted from time.")
             // Subtracts
             time = time - penaltyTime;
-        }
+        // }
     }
     // subtractTime();
 
