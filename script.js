@@ -15,6 +15,7 @@ function quizGame(){
     // -- This was done with HTML. No need to dynamically generate ... currently
     document.getElementById("start-btn").addEventListener("click", function(){
         console.log("Button Clicked");
+        document.getElementById("main-container").innerHTML = ""
         renderQuestion();
         timer();
     });
@@ -45,29 +46,6 @@ function quizGame(){
     let containerEl = document.createElement("div");
     containerEl.setAttribute("class", "container");
     
-    // function createRow(rowTotal, text, textType) {
-    //     console.log("createRow test")
-        
-    //     for (let i = 0; i < rowTotal; i++){
-    //         const rowEl = document.createElement("div");
-    //         rowEl.setAttribute("class", "row")
-    //         // console.log(rowEl);
-    //         containerEl.append(rowEl);
-            
-    //         const colEl = document.createElement("div");
-    //         colEl.setAttribute("class", "col");
-    //         // console.log(ColEl);
-    //         rowEl.append(colEl);
-
-    //         const textEl = document.createElement(textType);
-    //         textEl.innerHTML = text;
-    //         colEl.append(textEl);
-            
-    //         document.body.append(containerEl);
-    //     }
-        
-    // }
-
     function createRow(rowTotal, content) {
         console.log("createRow test")
         
@@ -94,55 +72,22 @@ function quizGame(){
     //  -- -- currentQuestion should be moved up to other variables at some point.
     let currentQuestion = 0;
     function renderQuestion() {
-        // console.log("renderQuestion test")
-        // // Creates the main container for displaying the question
-        // const questionContainerEl = document.createElement("div");
-        // questionContainerEl.setAttribute("class", "container");
-        // // console.log(questionContainerEl);
-        
-        // const questionRowEl = document.createElement("div");
-        // questionRowEl.setAttribute("class", "row")
-        // // console.log(questionRowEl);
-        // questionContainerEl.append(questionRowEl);
-        
-        // const questionColEl = document.createElement("div");
-        // questionColEl.setAttribute("class", "col");
-        // // console.log(questionColEl);
-        // // console.log(questionContainerEl);
-        // questionRowEl.append(questionColEl);
-        
-        // const questionEl = document.createElement("h3");
-        // questionEl.innerHTML = questions[currentQuestion].title;
-        // questionColEl.append(questionEl);
-        // // console.log(questionEl);
         
         const questionEl = document.createElement("h3");
         questionEl.innerHTML = questions[currentQuestion].title;
-        createRow(1, questionEl)
+        
+        createRow(1, questionEl);
 
-        
-        // const answerRowEl = document.createElement("div");
-        // answerRowEl.setAttribute("class", "row")
-        // // console.log(answerRowEl);
-        // containerEl.append(answerRowEl);
-        
-        // const answerColEl = document.createElement("div");
-        // answerColEl.setAttribute("class", "col");
-        // // console.log(answerColEl);
-        // // console.log(questionContainerEl);
-        // answerRowEl.append(answerColEl);
-        
         let answerEl = "";
         
         // Create a lopp to add a button for every question
         // Must have let i=0; instead of i=0; if I want event listner to be able to use i.
         for(let i=0; i < questions[currentQuestion].choices.length; i++){
-            // console.log(questions[currentQuestion].choices[i]);
+       
             answerEl = document.createElement("button");
             answerEl.setAttribute("class", "btn btn-secondary");
             answerEl.innerHTML = questions[currentQuestion].choices[i];
             createRow(1, answerEl)
-            // answerColEl.append(answerEl);
 
             answerEl.addEventListener("click", function(){
                 console.log(questions[currentQuestion].choices[i]+" clicked");
@@ -152,28 +97,26 @@ function quizGame(){
             })
             // console.log(answerEl);
         }
-        
-        
-
         // Used to append container, which is all of the html, to the body
         document.body.append(containerEl);
-        
     }
-    // renderQuestion();
     // Get user answer
     // Check if user answer is correct
     function answerCheck () {
         // console.log("answerCheck test")
+        // document.body.lastChild.lastChild.innerHTML = "";
         if (questions[currentQuestion].answer === questions[currentQuestion].userAnswer)
         {
             console.log("User answered question correctly.");
             questions[currentQuestion].outcome = true;
             console.log(questions[currentQuestion].outcome);
+            document.getElementById("outcomeDisplay").innerHTML = "Correct!";
             
         } else {
             console.log("User answered question incorrectly.");
             questions[currentQuestion].outcome = false;
             console.log(questions[currentQuestion].outcome);
+            document.getElementById("outcomeDisplay").innerHTML = "Wrong!";
         }
     }
     // answerCheck();
