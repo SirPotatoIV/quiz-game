@@ -53,21 +53,23 @@ function quizGame(){
         questionContainerEl.setAttribute("class", "container");
         console.log(questionContainerEl);
         
-        const rowEl = document.createElement("div");
-        rowEl.setAttribute("class", "row")
-        console.log(rowEl);
-        questionContainerEl.append(rowEl);
+        const questionRowEl = document.createElement("div");
+        questionRowEl.setAttribute("class", "row")
+        console.log(questionRowEl);
+        questionContainerEl.append(questionRowEl);
         
         const colEl = document.createElement("div");
         colEl.setAttribute("class", "col");
         console.log(colEl);
         // console.log(questionContainerEl);
-        rowEl.append(colEl);
+        questionRowEl.append(colEl);
         
-        const testEl = document.createElement("h1");
-        testEl.innerHTML = "Test";
-        colEl.append(testEl);
-        console.log(testEl);
+        const questionEl = document.createElement("h1");
+        questionEl.innerHTML = "Question";
+        colEl.append(questionEl);
+        console.log(questionEl);
+
+
         
         // Used to append container, which is all of the html, to the body
         document.body.append(questionContainerEl);
