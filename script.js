@@ -48,15 +48,28 @@ function quizGame(){
     //  -- to generate html for questions
     function renderQuestion() {
         console.log("renderQuestion test")
+        // Creates the main container for displaying the question
         const questionContainerEl = document.createElement("div");
         questionContainerEl.setAttribute("class", "container");
-        
         console.log(questionContainerEl);
+        
+        const rowEl = document.createElement("div");
+        rowEl.setAttribute("class", "row")
+        console.log(rowEl);
+        questionContainerEl.append(rowEl);
+        
+        const colEl = document.createElement("div");
+        colEl.setAttribute("class", "col");
+        console.log(colEl);
+        // console.log(questionContainerEl);
+        rowEl.append(colEl);
         
         const testEl = document.createElement("h1");
         testEl.innerHTML = "Test";
-        questionContainerEl.append(testEl);
+        colEl.append(testEl);
         console.log(testEl);
+        
+        // Used to append container, which is all of the html, to the body
         document.body.append(questionContainerEl);
         
     }
