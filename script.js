@@ -13,7 +13,8 @@ function quizGame(){
     // Create button to start game
     // -- This was done with HTML. No need to dynamically generate ... currently
     document.getElementById("start-btn").addEventListener("click", function(){
-        console.log("Button Clicked")
+        console.log("Button Clicked");
+        timer();
     });
     // Start a timer and display countdown
     function timer() {
@@ -33,7 +34,7 @@ function quizGame(){
         }, 1000);
 
     }
-    timer();
+    // timer();
     // Create function to start the game 
     //  -- to start the timer
     function startGame() {
