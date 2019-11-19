@@ -19,6 +19,6 @@
           
         ];
     
-    console.log(questions);
+    // console.log(questions);
 // }
 // createQuestions();

@@ -21,6 +21,7 @@ function quizGame(){
     function timer() {
         time = defaultTime;
         // Creates an interval that runs every 1000 ms or 1 second.
+        // Referenced instructors example for creating a timer.
         mainInterval = setInterval(function(){
             // Used to calculate the current time. The interval runs every second. Therefore, 1 second is subtracted every interation.
             subtractTime();
@@ -40,11 +41,18 @@ function quizGame(){
     // Create function to start the game 
     //  -- to start the timer
     function startGame() {
-        console.log("startGame Test");
+        console.log("startGame test");
     }
     startGame();
 
     //  -- to generate html for questions
+    function renderQuestion() {
+        console.log("renderQuestion test")
+        questionContainerEl = document.createElement("div");
+        questionContainerEl.setAttribute("class", "container");
+        console.log(questionContainerEl);
+    }
+    renderQuestion();
     // Get user answer
     // Check if user answer is correct
     function answerCheck () {
