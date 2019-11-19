@@ -45,8 +45,16 @@ function quizGame(){
     // Get user answer
     // Check if user answer is correct
     // Decide if time should be subtracted
+    console.log(questions);
     function timeSubtract() {
-        console.log("timeSubtract Test")
+        console.log("timeSubtract Test");
+        console.log(questions);
+        // if (questions[0].outcome) {
+        //     // Nothing for now
+        // } else {
+        //     console.log("User got question wrong. 1 second subracted from time.")
+        //     time = time - 1;
+        // }
     }
     timeSubtract();
 
