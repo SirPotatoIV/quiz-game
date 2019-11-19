@@ -85,8 +85,13 @@ function quizGame(){
         answerColEl.append(answerEl);
         console.log(answerEl);
         
-
+        // create a lopp to add a button for every question
+        for(i=0; i < questions.length; i++){
+            console.log(questions[i].choices);
+        }
         
+        
+
         // Used to append container, which is all of the html, to the body
         document.body.append(questionContainerEl);
         
