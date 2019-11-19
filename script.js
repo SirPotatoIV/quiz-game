@@ -179,15 +179,25 @@ function quizGame(){
     function renderEndGame() {
         console.log("renderEndGame test");
         containerEl.innerHTML = "";
+        // Used to  create an element to display to user that the game is over
         const endGameMessageEl = document.createElement('h2');
         endGameMessageEl.innerText = "All done!";
+        // Used to create an element to display the user's score
         const userScoreMessageEl = document.createElement('h4');
         userScoreMessageEl.innerHTML = "Your score was: "+ calcFinalScore();
         endGameMessageEl.append(userScoreMessageEl);
+        // Used to request the user to input their initials to store their score.
         const initialMessageEl = document.createElement('div');
         initialMessageEl.setAttribute('class', 'user-input');
         initialMessageEl.innerHTML = "Enter your intials: <input type='text' id='intialInput'></input>"
         endGameMessageEl.append(initialMessageEl);
+        // Used to create a button to trigger adding the users high score and intials to the high score board
+        const addHighScoreBtnEl = document.createElement('button');
+        addHighScoreBtnEl.setAttribute('class','btn btn-success');
+        addHighScoreBtnEl.setAttribute('id', 'submit-btn');
+        addHighScoreBtnEl.innerText = "Submit Highscore";
+        endGameMessageEl.append(addHighScoreBtnEl);
+        // Used to display all of the created elements on the page
         createRow(1, endGameMessageEl);
     }
     // renderEndGame();
