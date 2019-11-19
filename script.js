@@ -3,7 +3,7 @@ function quizGame(){
     // Define variables to store questions, time, score, all-time score
     // -- See questions.js for variable being used to store the questions
     let time = 0;
-    const defaultTime = 60;
+    const defaultTime = 10;
     const score = 0;
     const highScores = [];
 
@@ -13,10 +13,16 @@ function quizGame(){
     // Start a timer and display countdown
     function timer() {
         time = defaultTime;
+        // Creates an interval that runs every 1000 ms or 1 second.
         mainInterval = setInterval(function(){
+            // Used to calculate the current time. The interval runs every second. Therefore, 1 second is subtracted every interation.
             time = time - 1;
 
             console.log("timer test:"+ time);
+
+            if (time <= 0)
+            clearInterval(mainInterval);
+
         }, 1000);
 
     }
