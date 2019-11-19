@@ -7,7 +7,7 @@ function quizGame(){
     const score = 0;
     const highScores = [];
     timeDisplayEl = document.getElementById("time-display")
-    console.log(timeDisplayEl);
+    // console.log(timeDisplayEl);
 
 
     // Create button to start game
@@ -38,13 +38,18 @@ function quizGame(){
     // Create function to start the game 
     //  -- to start the timer
     function startGame() {
-        console.log("test startGame.");
+        console.log("startGame Test");
     }
     startGame();
     //  -- to generate html for questions
     // Get user answer
     // Check if user answer is correct
     // Decide if time should be subtracted
+    function timeSubtract() {
+        console.log("timeSubtract Test")
+    }
+    timeSubtract();
+
     // Update variable to store if answer was right or wrong
     // Calculate final score
     // Display Score
