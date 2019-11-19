@@ -47,6 +47,16 @@ function quizGame(){
     //  -- to generate html for questions
     // Get user answer
     // Check if user answer is correct
+    function answerCheck () {
+        console.log("answerCheck test")
+        if (questions[0].answer === questions[0].userAnswer)
+        {
+            console.log("User answered question correctly.");
+        } else {
+            console.log("User answered question incorrectly.");
+        }
+    }
+    answerCheck();
     // Decide if time should be subtracted
     function subtractTime() {
         // console.log("subtractTime Test");
@@ -59,7 +69,7 @@ function quizGame(){
             time = time - penaltyTime;
         }
     }
-    subtractTime();
+    // subtractTime();
 
     // Update variable to store if answer was right or wrong
     // Calculate final score
