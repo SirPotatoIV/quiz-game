@@ -16,7 +16,7 @@ function quizGame(){
     // -- This was done with HTML. No need to dynamically generate ... currently
     document.getElementById("start-btn").addEventListener("click", function(){
         console.log("Button Clicked");
-        document.getElementById("main-container").innerHTML = ""
+        document.getElementById("main-container").innerHTML = "";
         currentQuestion = 0;
         renderQuestion();
         timer();
@@ -45,8 +45,10 @@ function quizGame(){
 
     // let rowCount = 2;
     // let textToDisplay = "Test";
-    let containerEl = document.createElement("div");
-    containerEl.setAttribute("class", "container");
+    // let containerEl = document.createElement("div");
+    // containerEl.setAttribute("class", "container");
+    let containerEl = document.getElementById("main-container");
+    // containerEl.setAttribute("class", "container");
     
     function createRow(rowTotal, content) {
         console.log("createRow test")
@@ -73,7 +75,9 @@ function quizGame(){
     //  -- -- Following insctructors example to start building function
     //  -- -- currentQuestion should be moved up to other variables at some point.
     function renderQuestion() {
-        
+        // Used to clear start button at beginning and clear previous question;
+        containerEl.innerHTML = "";
+        console.log(containerEl);
         const questionEl = document.createElement("h3");
         questionEl.innerHTML = questions[currentQuestion].title;
         
@@ -96,8 +100,7 @@ function quizGame(){
                 console.log("User Answer: "+questions[currentQuestion].userAnswer);
                 answerCheck();
                 switchQuestion();
-                renderQuestion;
-
+                renderQuestion();
             })
             // console.log(answerEl);
         }
