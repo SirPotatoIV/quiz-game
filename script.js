@@ -215,6 +215,20 @@ function quizGame(){
         const highscoreTitleEl = document.createElement('h1');
         highscoreTitleEl.innerHTML = "Highscores";
         highscoreContainerEl.append(highscoreTitleEl);
+        
+        
+        for (let i=0; i < highscores.length; i++){
+            let highscoreDisplayEl = document.createElement('div');
+            highscoreDisplayEl.innerText = (i+1)+". "+highscores[i].initial+"-"+highscores[i].score;
+            console.log(highscoreDisplayEl);
+            highscoreContainerEl.append(highscoreDisplayEl);
+            // createRow(1,highscoreDisplayEl);
+            // restartBtnEl = document.createElement('button');
+            // clear
+        }
+        
+        
+        // Appends highscore content to body so it is viewable.
         document.body.append(highscoreContainerEl);
 
     }

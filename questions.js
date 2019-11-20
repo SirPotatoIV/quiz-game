@@ -19,10 +19,18 @@
           
         ];
         
-    const highScores = [
+    const highscores = [
         {
-            initials: "",
-            score: 0,
+            initial: "JMO",
+            score: 10
+        },
+        {
+            initial: "KLO",
+            score: 9
+        },
+        {
+            initial: "PLO",
+            score: 8
         }
     ];
     
