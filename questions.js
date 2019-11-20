@@ -19,7 +19,7 @@
           
         ];
         
-    const highscores = [
+    let highscores = [
         {
             initial: "JMO",
             score: 10

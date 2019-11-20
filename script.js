@@ -224,7 +224,7 @@ function quizGame(){
             highscoreContainerEl.append(highscoreDisplayEl);
         }
         
-        //Creates restart buttn
+        //Creates restart button
         restartBtnEl = document.createElement('button');
         restartBtnEl.setAttribute('class', 'btn btn-success');
         restartBtnEl.innerText = 'Restart Quiz';
@@ -232,8 +232,17 @@ function quizGame(){
         restartBtnEl.addEventListener('click', function(){
             document.location.reload()
         });
-        // clearScoresBtnEl = document.createElement('button');
-        
+        //Creates clear highscores button
+        clearScoresBtnEl = document.createElement('button');
+        clearScoresBtnEl.setAttribute('class', 'btn btn-danger');
+        clearScoresBtnEl.innerText = 'Clear Highscores';
+        highscoreContainerEl.append(clearScoresBtnEl);
+        clearScoresBtnEl.addEventListener('click', function(){
+            // document.location.reload()
+            console.log('clear highscores button clicked')
+            highscores = [];
+            handleHighscore();
+        });
         // Appends highscore content to body so it is viewable.
         document.body.append(highscoreContainerEl);
 
