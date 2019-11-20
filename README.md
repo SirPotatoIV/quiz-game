@@ -32,7 +32,7 @@ I created this code based on the homework prompt created by Triology Education S
 I was the only one to work on this project, but of course I had help from my instructor, TA's, and classmates.
 
 ## Challenges
-Early on I tried creating an array that included the names of each character array. I was hoping I could use this array to select each array at random. Turns out you can't use strings to as variable names due to the way Javascrit works. I think this could have been possible by creating an object that contained the arrays, but since we haven't done a deep dive on objects yet, I decided to figure out how to complete the assignment without using functionality of objects. I quickly realized my strategy included copy pasting my code multiple times to achieve my end result. I am well aware that my code is not even close to D.R.Y. and a combonation of functions and using objects could probably make it more dry, but I ran out of time to simplify the code.
+I struggled with deciding when to create a function and when not to create a function. In addition, I struggled with deciding what to include in which function to make it as easy as possible to change code or read code in the future. Often made the mistake of defining a variable when really I wanted to set the value of the variable to a different value. Another major challenge was keeping all the element creation and appending of the elements straight. Sometimes got lost of what was being appended to which portion of the html.
 
 ## Live site: 
 https://sirpotatoiv.github.io/quiz-game/
