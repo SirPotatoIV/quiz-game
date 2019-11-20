@@ -123,6 +123,7 @@ function quizGame(){
         {
             // console.log("User answered question correctly.");
             questions[currentQuestion].outcome = true;
+            questions[currentQuestion].time = time;
             // console.log(questions[currentQuestion].outcome);
             // Displays outcome of the user answering the question, when the user is correct
             document.getElementById("outcomeDisplay").innerHTML = "Correct!";
@@ -171,7 +172,7 @@ function quizGame(){
         let finalScore = 0;
         for(let i = 0; i < questions.length; i++){
             if(questions[i].outcome){
-                finalScore++;
+                finalScore = finalScore + questions[i].time;
             }
             else {
                 // Nothing
