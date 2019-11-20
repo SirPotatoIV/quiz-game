@@ -12,18 +12,18 @@
 <body>
     <!-- Header for site to use as title that will always be displayed -->
     <!-- https://getbootstrap.com/docs/4.0/components/navbar/ -->
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">The Coding Quiz</span>
-        <div>
-            <!-- Used to link the user to a list of all the saved high scores -->
-            <a href="#">High Scores</a>
-        </div>
+    <nav class="navbar bg-dark">
+        <button class="text-light mb-0 btn" id="view-highscore-btn">High Scores</button>
         <!-- Used to display the timer that will countdown the time remaining for the quiz -->
         <div class="text-light" id="time-display">00</div>
-
     </nav>
     <!-- Used to contain the button that will start the game. Container will disappear when button is clicked. -->
     <div class="container" id = "main-container">
+        <div class="row m-2">
+            <div class="col text-center">
+                <div class="display-2">The Coding Quiz</div>
+            </div>
+        </div>
         <div class="row m-2">
             <div class="col text-center">
                 <!-- Button used to start the quiz game. -->

@@ -14,13 +14,20 @@ function quizGame(){
 
     // Create code to start the game.
     // -- This was done with HTML. No need to dynamically generate ... currently
-    document.getElementById("start-btn").addEventListener("click", function(){
-        console.log("Button Clicked");
-        document.getElementById("main-container").innerHTML = "";
-        currentQuestion = 0;
-        renderQuestion();
-        timer();
-    });
+    function firstButtons() {
+        document.getElementById("start-btn").addEventListener("click", function(){
+            console.log("Button Clicked");
+            document.getElementById("main-container").innerHTML = "";
+            currentQuestion = 0;
+            renderQuestion();
+            timer();
+        });
+        document.getElementById("view-highscore-btn").addEventListener("click", function(){
+            handleHighscore();
+        });
+        
+    }
+    firstButtons();
     // Start a timer and display countdown
     function timer() {
         time = defaultTime;
@@ -54,23 +61,24 @@ function quizGame(){
         console.log("createRow test")
         
         for (let i = 0; i < rowTotal; i++){
+            //Creates a div with class row
             const rowEl = document.createElement("div");
             rowEl.setAttribute("class", "row")
-            // console.log(rowEl);
-            containerEl.append(rowEl);
-            
+            // Creates a div with class col            
             const colEl = document.createElement("div");
             colEl.setAttribute("class", "col");
-            // console.log(ColEl);
-            rowEl.append(colEl);
-
+            // Appends content to the column
+            // content is passed into the function
             colEl.append(content);
+            // Appends column to the row
+            rowEl.append(colEl);
+            // Appends the row, which now includes everything created, to the container El, which is the main container
+            containerEl.append(rowEl);
             
-            // document.body.append(containerEl);
         }
         
     }
-    // createRow(rowCount, textToDisplay);
+    
     //  -- to generate html for questions
     //  -- -- Following insctructors example to start building function
     //  -- -- currentQuestion should be moved up to other variables at some point.
@@ -127,20 +135,14 @@ function quizGame(){
             document.getElementById("outcomeDisplay").innerHTML = "Wrong!";
         }
     }
-    // answerCheck();
+    
     // Decide if time should be subtracted
     function subtractTime() {
-        // console.log("subtractTime Test");
-        // console.log(questions);
-        // if (questions[i].outcome) {
-        //     // Nothing for now
-        // } else {
             console.log("User got question wrong. "+penaltyTime+" second(s) subracted from time.")
             // Subtracts
             time = time - penaltyTime;
-        // }
     }
-    // subtractTime();
+    
 
     // Update variable to store if answer was right or wrong
     // Change to next question
@@ -155,7 +157,7 @@ function quizGame(){
             // renderEndGame();
         }   
     }
-    // switchQuestion();
+    
     // Calculate final score
     function calcFinalScore() {
         let finalScore = 0;
