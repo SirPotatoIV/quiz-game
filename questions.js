@@ -18,6 +18,13 @@
           },
           
         ];
+        
+    const highScores = [
+        {
+            initials: "",
+            score: 0,
+        }
+    ];
     
     // console.log(questions);
 // }

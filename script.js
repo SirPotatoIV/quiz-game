@@ -199,7 +199,25 @@ function quizGame(){
         endGameMessageEl.append(addHighScoreBtnEl);
         // Used to display all of the created elements on the page
         createRow(1, endGameMessageEl);
+
+        addHighScoreBtnEl.addEventListener("click", handleHighscore);
     }
     // renderEndGame();
+
+    function handleHighscore() {
+        // Clears all content from view
+        document.body.innerHTML = "";
+        console.log('handleHighscore test');
+        // Creates container to display all the highscores
+        const highscoreContainerEl = document.createElement('div');
+        highscoreContainerEl.setAttribute('class','container');
+        // Creates title for highscore page
+        const highscoreTitleEl = document.createElement('h1');
+        highscoreTitleEl.innerHTML = "Highscores";
+        highscoreContainerEl.append(highscoreTitleEl);
+        document.body.append(highscoreContainerEl);
+
+    }
+    handleHighscore();
 }
 quizGame()
