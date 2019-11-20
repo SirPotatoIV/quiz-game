@@ -10,11 +10,14 @@ Starting View:
 
 Password Generation Example:
 
-![Password Generation Example](./assets/password-example.png)
+![Question View Example](./assets/question-view.png)
 
-Error Message Example:
+End of Game Example:
 
-![Error Message Example](./assets/error-message.png)
+![Example of view when game is over](./assets/end-view.png)
+
+Highscore Example:
+![Example of view of highscores](./assets/highscore-view.png)
 
 ## Installation 
 If all files are kept in a single folder a web browser should be able to run the project and you have an internet connection.
