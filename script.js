@@ -228,6 +228,10 @@ function quizGame(){
                 initial: userInitial,
                 score: userScore
             }
+            // Sorts highscores based on the best score in the array. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+            highscores.sort(function(a, b) {
+                return b.score - a.score;
+            })
             console.log(highscores)
             
             // Got code for JSON.stringify at https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
