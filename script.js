@@ -42,19 +42,13 @@ function quizGame(){
                 timeDisplayEl.innerHTML = "00";
                 // Only used for testing.
                 console.log("game over")
-                // renderEndGame();
+                renderEndGame();
             }
         }, 1000);
 
     }
-    // timer();
-
-    // let rowCount = 2;
-    // let textToDisplay = "Test";
-    // let containerEl = document.createElement("div");
-    // containerEl.setAttribute("class", "container");
+    
     let containerEl = document.getElementById("main-container");
-    // containerEl.setAttribute("class", "container");
     
     function createRow(rowTotal, content) {
         console.log("createRow test")
@@ -72,7 +66,7 @@ function quizGame(){
 
             colEl.append(content);
             
-            document.body.append(containerEl);
+            // document.body.append(containerEl);
         }
         
     }
@@ -122,6 +116,7 @@ function quizGame(){
             console.log("User answered question correctly.");
             questions[currentQuestion].outcome = true;
             console.log(questions[currentQuestion].outcome);
+            // containerEl.append(document.createElement('p').innerText = "Correct!");
             document.getElementById("outcomeDisplay").innerHTML = "Correct!";
             
         } else {
@@ -157,7 +152,7 @@ function quizGame(){
         } else {
             console.log("game over");
             time=0;
-            renderEndGame();
+            // renderEndGame();
         }   
     }
     // switchQuestion();
