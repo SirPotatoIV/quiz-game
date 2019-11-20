@@ -1,11 +1,9 @@
 function quizGame(){
-    console.log("script.js linked.");
+    // console.log("script.js linked.");
     // Define variables to store questions, time, score, all-time score
     // -- See questions.js for variable being used to store the questions
     let time = 0;
     const defaultTime = (15*questions.length);
-    const score = 0;
-    const highScores = [];
     const penaltyTime = 15;
     let currentQuestion = 0;
     timeDisplayEl = document.getElementById("time-display")
@@ -98,7 +96,7 @@ function quizGame(){
         for(let i=0; i < questions[currentQuestion].choices.length; i++){
        
             answerEl = document.createElement("button");
-            answerEl.setAttribute("class", "btn btn-secondary");
+            answerEl.setAttribute("class", "btn btn-secondary m-1");
             answerEl.innerHTML = questions[currentQuestion].choices[i];
             createRow(1, answerEl)
 
@@ -189,7 +187,8 @@ function quizGame(){
         containerEl.innerHTML = "";
         
         // Used to  create an element to display to user that the game is over
-        const endGameMessageEl = document.createElement('h2');
+        const endGameMessageEl = document.createElement('div');
+        endGameMessageEl.setAttribute('class', 'display-3');
         endGameMessageEl.innerText = "All done!";
         
         // Used to create an element to display the user's score
@@ -251,11 +250,13 @@ function quizGame(){
 
     function handleHighscore(highscores) {
 
-        if(highscores){
-            // Do Nothing
-            console.log('if in handleHighScore occurred');
+        if(localStorage.getItem('localHighscores')){
+            highscores = localStorage.getItem('localHighscores');
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+            highscores = JSON.parse(highscores);
+            console.log("if in highscorebtn occured", "highscores set to", localStorage.getItem('localHighscores'));
         }   else{
-            
+            console.log("else in highscorebtn occured");
             highscores = [];
         }
 
@@ -268,7 +269,8 @@ function quizGame(){
         highscoreContainerEl.setAttribute('class','container');
         
         // Creates title for highscore page
-        const highscoreTitleEl = document.createElement('h1');
+        const highscoreTitleEl = document.createElement('div');
+        highscoreTitleEl.setAttribute('class', 'display-2 text-center mb-3')
         highscoreTitleEl.innerHTML = "Highscores";
         highscoreContainerEl.append(highscoreTitleEl);
         
@@ -276,14 +278,15 @@ function quizGame(){
         for (let i=0; i < highscores.length; i++){
             console.log(highscores, highscores.length)
             let highscoreDisplayEl = document.createElement('div');
-            highscoreDisplayEl.innerText = (i+1)+". "+highscores[i].initial+"-"+highscores[i].score;
+            highscoreDisplayEl.setAttribute('class','m-1 bg-secondary text-white p-1')
+            highscoreDisplayEl.innerText = (i+1)+". "+highscores[i].initial+" - "+highscores[i].score;
             console.log(highscoreDisplayEl);
             highscoreContainerEl.append(highscoreDisplayEl);
         }
         
         //Creates restart button
         restartBtnEl = document.createElement('button');
-        restartBtnEl.setAttribute('class', 'btn btn-success');
+        restartBtnEl.setAttribute('class', 'btn btn-success m-1');
         restartBtnEl.innerText = 'Restart Quiz';
         highscoreContainerEl.append(restartBtnEl);
         restartBtnEl.addEventListener('click', function(){
@@ -291,7 +294,7 @@ function quizGame(){
         });
         //Creates clear highscores button
         clearScoresBtnEl = document.createElement('button');
-        clearScoresBtnEl.setAttribute('class', 'btn btn-danger');
+        clearScoresBtnEl.setAttribute('class', 'btn btn-danger m-1');
         clearScoresBtnEl.innerText = 'Clear Highscores';
         highscoreContainerEl.append(clearScoresBtnEl);
         clearScoresBtnEl.addEventListener('click', function(){
