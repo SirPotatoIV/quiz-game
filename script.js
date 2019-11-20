@@ -216,17 +216,23 @@ function quizGame(){
         highscoreTitleEl.innerHTML = "Highscores";
         highscoreContainerEl.append(highscoreTitleEl);
         
-        
+        // Creates element for each highscore and appends them to the container.
         for (let i=0; i < highscores.length; i++){
             let highscoreDisplayEl = document.createElement('div');
             highscoreDisplayEl.innerText = (i+1)+". "+highscores[i].initial+"-"+highscores[i].score;
             console.log(highscoreDisplayEl);
             highscoreContainerEl.append(highscoreDisplayEl);
-            // createRow(1,highscoreDisplayEl);
-            // restartBtnEl = document.createElement('button');
-            // clear
         }
         
+        //Creates restart buttn
+        restartBtnEl = document.createElement('button');
+        restartBtnEl.setAttribute('class', 'btn btn-success');
+        restartBtnEl.innerText = 'Restart Quiz';
+        highscoreContainerEl.append(restartBtnEl);
+        restartBtnEl.addEventListener('click', function(){
+            document.location.reload()
+        });
+        // clearScoresBtnEl = document.createElement('button');
         
         // Appends highscore content to body so it is viewable.
         document.body.append(highscoreContainerEl);
