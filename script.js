@@ -189,7 +189,7 @@ function quizGame(){
         // Used to request the user to input their initials to store their score.
         const initialMessageEl = document.createElement('div');
         initialMessageEl.setAttribute('class', 'user-input');
-        initialMessageEl.innerHTML = "Enter your intials: <input type='text' id='intialInput'></input>"
+        initialMessageEl.innerHTML = "Enter your intials: <input type='text' id='initial-input'></input>"
         endGameMessageEl.append(initialMessageEl);
         // Used to create a button to trigger adding the users high score and intials to the high score board
         const addHighScoreBtnEl = document.createElement('button');
@@ -200,17 +200,29 @@ function quizGame(){
         // Used to display all of the created elements on the page
         createRow(1, endGameMessageEl);
 
-        addHighScoreBtnEl.addEventListener("click", handleHighscore);
+        addHighScoreBtnEl.addEventListener("click", function(){
+            const userInitial = document.getElementById('initial-input').value;
+            console.log(userInitial);
+            const userScore = calcFinalScore();
+            highscores[(highscores.length)] = {
+                initial: userInitial,
+                score: userScore
+            }
+            handleHighscore();
+        });
     }
     // renderEndGame();
 
     function handleHighscore() {
+        
         // Clears all content from view
         document.body.innerHTML = "";
         console.log('handleHighscore test');
+        
         // Creates container to display all the highscores
         const highscoreContainerEl = document.createElement('div');
         highscoreContainerEl.setAttribute('class','container');
+        
         // Creates title for highscore page
         const highscoreTitleEl = document.createElement('h1');
         highscoreTitleEl.innerHTML = "Highscores";
@@ -247,6 +259,6 @@ function quizGame(){
         document.body.append(highscoreContainerEl);
 
     }
-    handleHighscore();
+    // handleHighscore();
 }
 quizGame()
