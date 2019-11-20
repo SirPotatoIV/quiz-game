@@ -103,9 +103,9 @@ function quizGame(){
             createRow(1, answerEl)
 
             answerEl.addEventListener("click", function(){
-                console.log(questions[currentQuestion].choices[i]+" clicked");
+                // console.log(questions[currentQuestion].choices[i]+" clicked");
                 questions[currentQuestion].userAnswer = questions[currentQuestion].choices[i];
-                console.log("User Answer: "+questions[currentQuestion].userAnswer);
+                // console.log("User Answer: "+questions[currentQuestion].userAnswer);
                 answerCheck();
                 switchQuestion();
             })
@@ -118,21 +118,29 @@ function quizGame(){
     // Check if user answer is correct
     function answerCheck () {
         // console.log("answerCheck test")
-        // document.body.lastChild.lastChild.innerHTML = "";
+      
         if (questions[currentQuestion].answer === questions[currentQuestion].userAnswer)
         {
-            console.log("User answered question correctly.");
+            // console.log("User answered question correctly.");
             questions[currentQuestion].outcome = true;
-            console.log(questions[currentQuestion].outcome);
-            // containerEl.append(document.createElement('p').innerText = "Correct!");
+            // console.log(questions[currentQuestion].outcome);
+            // Displays outcome of the user answering the question, when the user is correct
             document.getElementById("outcomeDisplay").innerHTML = "Correct!";
+            setTimeout(function(){
+                document.getElementById("outcomeDisplay").innerHTML = "";
+            }, 1500);
             
         } else {
             subtractTime()
-            console.log("User answered question incorrectly.");
+            // console.log("User answered question incorrectly.");
             questions[currentQuestion].outcome = false;
-            console.log(questions[currentQuestion].outcome);
+            // console.log(questions[currentQuestion].outcome);
+            // Displays outcome of the user answering the question, when the user is wrong
             document.getElementById("outcomeDisplay").innerHTML = "Wrong!";
+            setTimeout(function(){
+                document.getElementById("outcomeDisplay").innerHTML = "";
+            }, 1500);
+            
         }
     }
     
