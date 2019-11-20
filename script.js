@@ -112,7 +112,7 @@ function quizGame(){
             // console.log(answerEl);
         }
         // Used to append container, which is all of the html, to the body
-        document.body.append(containerEl);
+        // document.body.append(containerEl);
     }
     // Get user answer
     // Check if user answer is correct
