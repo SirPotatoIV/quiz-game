@@ -42,7 +42,7 @@ function quizGame(){
                 timeDisplayEl.innerHTML = "00";
                 // Only used for testing.
                 console.log("game over")
-                renderEndGame();
+                // renderEndGame();
             }
         }, 1000);
 
@@ -156,6 +156,7 @@ function quizGame(){
             renderQuestion();
         } else {
             console.log("game over");
+            time=0;
             renderEndGame();
         }   
     }
@@ -177,44 +178,77 @@ function quizGame(){
     // Collect User Initials and store score
     // Make code restart
     function renderEndGame() {
-        console.log("renderEndGame test");
+        // console.log("renderEndGame test");
+        
         containerEl.innerHTML = "";
+        
         // Used to  create an element to display to user that the game is over
         const endGameMessageEl = document.createElement('h2');
         endGameMessageEl.innerText = "All done!";
+        
         // Used to create an element to display the user's score
         const userScoreMessageEl = document.createElement('h4');
         userScoreMessageEl.innerHTML = "Your score was: "+ calcFinalScore();
         endGameMessageEl.append(userScoreMessageEl);
+        
         // Used to request the user to input their initials to store their score.
         const initialMessageEl = document.createElement('div');
         initialMessageEl.setAttribute('class', 'user-input');
         initialMessageEl.innerHTML = "Enter your intials: <input type='text' id='initial-input'></input>"
         endGameMessageEl.append(initialMessageEl);
+        
         // Used to create a button to trigger adding the users high score and intials to the high score board
         const addHighScoreBtnEl = document.createElement('button');
         addHighScoreBtnEl.setAttribute('class','btn btn-success');
         addHighScoreBtnEl.setAttribute('id', 'submit-btn');
         addHighScoreBtnEl.innerText = "Submit Highscore";
         endGameMessageEl.append(addHighScoreBtnEl);
+        
         // Used to display all of the created elements on the page
         createRow(1, endGameMessageEl);
 
         addHighScoreBtnEl.addEventListener("click", function(){
+            // took basis of code used to do local storage from instructor example.
+            let highscores = [];
+            if(localStorage.getItem('localHighscores')){
+                highscores = localStorage.getItem('localHighscores');
+                https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+                highscores = JSON.parse(highscores);
+                console.log("if in highscorebtn occured", "highscores set to", localStorage.getItem('localHighscores'));
+            }   else{
+                console.log("else in highscorebtn occured");
+                let highscores = [];
+            }
+            console.log("Highscores after if statement:", highscores);
             const userInitial = document.getElementById('initial-input').value;
-            console.log(userInitial);
+            // console.log(userInitial);
             const userScore = calcFinalScore();
+            console.log("highscores length", highscores.length)
             highscores[(highscores.length)] = {
                 initial: userInitial,
                 score: userScore
             }
-            handleHighscore();
+            console.log(highscores)
+            
+            // Got code for JSON.stringify at https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
+            window.localStorage.setItem('localHighscores', JSON.stringify(highscores));
+            
+            // localStorage.setItem('localHighscores');
+            handleHighscore(highscores);
         });
     }
     // renderEndGame();
 
-    function handleHighscore() {
-        
+    function handleHighscore(highscores) {
+
+        if(highscores){
+            // Do Nothing
+            console.log('if in handleHighScore occurred');
+        }   else{
+            
+            highscores = [];
+        }
+
         // Clears all content from view
         document.body.innerHTML = "";
         console.log('handleHighscore test');
@@ -230,6 +264,7 @@ function quizGame(){
         
         // Creates element for each highscore and appends them to the container.
         for (let i=0; i < highscores.length; i++){
+            console.log(highscores, highscores.length)
             let highscoreDisplayEl = document.createElement('div');
             highscoreDisplayEl.innerText = (i+1)+". "+highscores[i].initial+"-"+highscores[i].score;
             console.log(highscoreDisplayEl);
@@ -252,7 +287,7 @@ function quizGame(){
         clearScoresBtnEl.addEventListener('click', function(){
             // document.location.reload()
             console.log('clear highscores button clicked')
-            highscores = [];
+            window.localStorage.removeItem('localHighscores');
             handleHighscore();
         });
         // Appends highscore content to body so it is viewable.

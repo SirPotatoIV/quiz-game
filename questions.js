@@ -19,20 +19,20 @@
           
         ];
         
-    let highscores = [
-        {
-            initial: "JMO",
-            score: 10
-        },
-        {
-            initial: "KLO",
-            score: 9
-        },
-        {
-            initial: "PLO",
-            score: 8
-        }
-    ];
+    // let highscores = [
+    //     {
+    //         initial: "JMO",
+    //         score: 10
+    //     },
+    //     {
+    //         initial: "KLO",
+    //         score: 9
+    //     },
+    //     {
+    //         initial: "PLO",
+    //         score: 8
+    //     }
+    // ];
     
     // console.log(questions);
 // }
