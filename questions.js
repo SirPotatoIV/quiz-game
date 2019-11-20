@@ -1,5 +1,3 @@
-// function createQuestions() {
-    console.log("questions.js linked.");
     // Basis of code taken from homework README.
     const questions = [
           {

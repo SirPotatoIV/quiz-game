@@ -1,5 +1,4 @@
 function quizGame(){
-    // console.log("script.js linked.");
     // Define variables to store questions, time, score, all-time score
     // -- See questions.js for variable being used to store the questions
     let time = 0;
@@ -7,14 +6,12 @@ function quizGame(){
     const penaltyTime = 15;
     let currentQuestion = 0;
     timeDisplayEl = document.getElementById("time-display")
-    // console.log(timeDisplayEl);
 
 
     // Create code to start the game.
     // -- This was done with HTML. No need to dynamically generate ... currently
     function firstButtons() {
         document.getElementById("start-btn").addEventListener("click", function(){
-            console.log("Button Clicked");
             document.getElementById("main-container").innerHTML = "";
             currentQuestion = 0;
             renderQuestion();
@@ -33,10 +30,8 @@ function quizGame(){
         // Referenced instructors example for creating a timer.
         mainInterval = setInterval(function(){
             // Used to calculate the current time. The interval runs every second. Therefore, 1 second is subtracted every interation.
-            // subtractTime();
             time = time - 1;
 
-            console.log("timer test:"+ time);
             // Changes the inner html of the element that displays the time remaining ever interval, ie every second.
             timeDisplayEl.innerHTML = time;
 
@@ -46,7 +41,6 @@ function quizGame(){
                 // Due to the time subtraction, sometimes the final time is less than 0. This causes the display to be 00 when the clock runs out.
                 timeDisplayEl.innerHTML = "00";
                 // Only used for testing.
-                console.log("game over")
                 renderEndGame();
             }
         }, 1000);
@@ -56,7 +50,6 @@ function quizGame(){
     let containerEl = document.getElementById("main-container");
     
     function createRow(rowTotal, content) {
-        console.log("createRow test")
         
         for (let i = 0; i < rowTotal; i++){
             //Creates a div with class row
@@ -83,7 +76,6 @@ function quizGame(){
     function renderQuestion() {
         // Used to clear start button at beginning and clear previous question;
         containerEl.innerHTML = "";
-        console.log(containerEl);
         const questionEl = document.createElement("h3");
         questionEl.innerHTML = questions[currentQuestion].title;
         
@@ -101,13 +93,10 @@ function quizGame(){
             createRow(1, answerEl)
 
             answerEl.addEventListener("click", function(){
-                // console.log(questions[currentQuestion].choices[i]+" clicked");
                 questions[currentQuestion].userAnswer = questions[currentQuestion].choices[i];
-                // console.log("User Answer: "+questions[currentQuestion].userAnswer);
                 answerCheck();
                 switchQuestion();
             })
-            // console.log(answerEl);
         }
         // Used to append container, which is all of the html, to the body
         // document.body.append(containerEl);
@@ -115,14 +104,11 @@ function quizGame(){
     // Get user answer
     // Check if user answer is correct
     function answerCheck () {
-        // console.log("answerCheck test")
       
         if (questions[currentQuestion].answer === questions[currentQuestion].userAnswer)
         {
-            // console.log("User answered question correctly.");
             questions[currentQuestion].outcome = true;
             questions[currentQuestion].time = time;
-            // console.log(questions[currentQuestion].outcome);
             // Displays outcome of the user answering the question, when the user is correct
             document.getElementById("outcomeDisplay").innerHTML = "Correct!";
             setTimeout(function(){
@@ -131,9 +117,7 @@ function quizGame(){
             
         } else {
             subtractTime()
-            // console.log("User answered question incorrectly.");
             questions[currentQuestion].outcome = false;
-            // console.log(questions[currentQuestion].outcome);
             // Displays outcome of the user answering the question, when the user is wrong
             document.getElementById("outcomeDisplay").innerHTML = "Wrong!";
             setTimeout(function(){
@@ -145,7 +129,6 @@ function quizGame(){
     
     // Decide if time should be subtracted
     function subtractTime() {
-            console.log("User got question wrong. "+penaltyTime+" second(s) subracted from time.")
             // Subtracts
             time = time - penaltyTime;
     }
@@ -156,10 +139,8 @@ function quizGame(){
     function switchQuestion() {
         if(currentQuestion <= (questions.length-2)){
             currentQuestion = currentQuestion + 1;
-            console.log(currentQuestion, questions.length)
             renderQuestion();
         } else {
-            console.log("game over");
             time=0;
             // renderEndGame();
         }   
@@ -180,9 +161,7 @@ function quizGame(){
     }
     // Display Score
     // Collect User Initials and store score
-    // Make code restart
     function renderEndGame() {
-        // console.log("renderEndGame test");
         
         containerEl.innerHTML = "";
         
@@ -211,7 +190,7 @@ function quizGame(){
         
         // Used to display all of the created elements on the page
         createRow(1, endGameMessageEl);
-
+        
         addHighScoreBtnEl.addEventListener("click", function(){
             // took basis of code used to do local storage from instructor example.
             let highscores = [];
@@ -219,16 +198,11 @@ function quizGame(){
                 highscores = localStorage.getItem('localHighscores');
                 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
                 highscores = JSON.parse(highscores);
-                console.log("if in highscorebtn occured", "highscores set to", localStorage.getItem('localHighscores'));
             }   else{
-                console.log("else in highscorebtn occured");
                 let highscores = [];
             }
-            console.log("Highscores after if statement:", highscores);
             const userInitial = document.getElementById('initial-input').value;
-            // console.log(userInitial);
             const userScore = calcFinalScore();
-            console.log("highscores length", highscores.length)
             highscores[(highscores.length)] = {
                 initial: userInitial,
                 score: userScore
@@ -237,32 +211,28 @@ function quizGame(){
             highscores.sort(function(a, b) {
                 return b.score - a.score;
             })
-            console.log(highscores)
             
             // Got code for JSON.stringify at https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
             window.localStorage.setItem('localHighscores', JSON.stringify(highscores));
             
-            // localStorage.setItem('localHighscores');
             handleHighscore(highscores);
         });
     }
-    // renderEndGame();
-
+    
+    // Make code restart and be able to erase highscores
+    // Render highscore view
     function handleHighscore(highscores) {
-
+        
         if(localStorage.getItem('localHighscores')){
             highscores = localStorage.getItem('localHighscores');
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
             highscores = JSON.parse(highscores);
-            console.log("if in highscorebtn occured", "highscores set to", localStorage.getItem('localHighscores'));
         }   else{
-            console.log("else in highscorebtn occured");
             highscores = [];
         }
 
         // Clears all content from view
         document.body.innerHTML = "";
-        console.log('handleHighscore test');
         
         // Creates container to display all the highscores
         const highscoreContainerEl = document.createElement('div');
@@ -276,11 +246,9 @@ function quizGame(){
         
         // Creates element for each highscore and appends them to the container.
         for (let i=0; i < highscores.length; i++){
-            console.log(highscores, highscores.length)
             let highscoreDisplayEl = document.createElement('div');
             highscoreDisplayEl.setAttribute('class','m-1 bg-secondary text-white p-1')
             highscoreDisplayEl.innerText = (i+1)+". "+highscores[i].initial+" - "+highscores[i].score;
-            console.log(highscoreDisplayEl);
             highscoreContainerEl.append(highscoreDisplayEl);
         }
         
@@ -298,8 +266,6 @@ function quizGame(){
         clearScoresBtnEl.innerText = 'Clear Highscores';
         highscoreContainerEl.append(clearScoresBtnEl);
         clearScoresBtnEl.addEventListener('click', function(){
-            // document.location.reload()
-            console.log('clear highscores button clicked')
             window.localStorage.removeItem('localHighscores');
             handleHighscore();
         });
@@ -307,6 +273,5 @@ function quizGame(){
         document.body.append(highscoreContainerEl);
 
     }
-    // handleHighscore();
 }
 quizGame()
